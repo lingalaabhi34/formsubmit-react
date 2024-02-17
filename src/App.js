@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./style.css"
 const App=()=>{
-
-  const [one,setone] = useState("");
+const [gmail,setgmail] = useState("");
+const [one,setone] = useState("");
 const [two,settwo] = useState("");
 const [output,setoutput] =useState("");
 
@@ -15,11 +15,17 @@ const [output,setoutput] =useState("");
  }
  const result=(e)=>{
   e.preventDefault();
+  
  if(one.length-1 >= 8 && two.length-1 >= 8){
   const three=one.toLowerCase();
   const four = two.toLowerCase();
   if(three.includes(four)){
-    alert("form submitted successfully")
+
+    setgmail("");
+    setone("");
+    settwo("");
+    alert("form submitted successfully");
+   
   }
   else{
     alert("can’t submit the form | password and confirm password must be same")
@@ -33,11 +39,11 @@ const [output,setoutput] =useState("");
     <div className="container">
       <form onSubmit={result}>
         <label for="gmail">Enter your Gmail : </label>
-      <input type="email" required id="gmail"></input>
+      <input type="email" required id="gmail" value={gmail} onChange={(e)=>setgmail(e.target.value)}></input>
       <label for="password">Password : </label>
-      <input type="password" onChange={password} required id="password"></input>
+      <input type="password" onChange={password} required id="password" value={one}></input>
       <label for="consfirmpassword">Confirm Password : </label>
-      <input type="password" onChange={confirmpassword} required id="consfirmpassword"></input>
+      <input type="password" onChange={confirmpassword} required id="consfirmpassword" value={two}></input>
       <button type="submit">Submit</button>
       </form>
     </div>
